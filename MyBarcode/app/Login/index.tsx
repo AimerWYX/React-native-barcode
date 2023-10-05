@@ -74,7 +74,7 @@ export const Login = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-        <Text style={styles.myApp}>CHAT GPT</Text>
+        <Text style={styles.myApp}>React Native</Text>
       </ImageBackground>
     </SafeAreaView>
   );
