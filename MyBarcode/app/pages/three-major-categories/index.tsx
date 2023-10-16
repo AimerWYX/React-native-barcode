@@ -2,7 +2,7 @@ import React from 'react';
 import tw from 'twrnc';
 import {Text, TouchableOpacity, View} from 'react-native';
 
-export const ThreeMajorCategories = ({navigation}) => {
+export const ThreeMajorCategories = ({navigation}: any) => {
   return (
     <View style={tw`p-3`}>
       <View style={tw`flex-row items-center bg-white rounded-1 shadow`}>
