@@ -18,7 +18,9 @@ export const Home = ({navigation}) => {
               {item.linkCardList.map((childrenItem, childrenIndex) => {
                 return (
                   <TouchableOpacity
-                    onPress={() => navigation.navigate(childrenItem.link)}
+                    onPress={() =>
+                      navigation.navigate(childrenItem.link ?? 'Home')
+                    }
                     key={childrenIndex}
                     activeOpacity={0.5}
                     style={tw.style(
