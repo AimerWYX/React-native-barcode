@@ -1,52 +1,79 @@
 import {useState} from 'react';
+import {dialogType} from './props';
 
 export type normalItemDto = {
   name: string;
   startDate: string;
   endDate: string;
   count: string;
+  check: boolean;
 };
 
 export const useAction = () => {
   const [normalItem, setNormalItem] = useState<normalItemDto[]>([
-    {name: 'CHICKEN', startDate: '--', endDate: '--', count: '0/5'},
-    {name: 'BEEF', startDate: '--', endDate: '--', count: '0/200'},
-    {name: 'PORK', startDate: '--', endDate: '--', count: '0/200'},
+    {
+      name: 'CHICKEN',
+      startDate: '--',
+      endDate: '--',
+      count: '0/5',
+      check: false,
+    },
+    {
+      name: 'BEEF',
+      startDate: '--',
+      endDate: '--',
+      count: '0/200',
+      check: false,
+    },
+    {
+      name: 'PORK',
+      startDate: '--',
+      endDate: '--',
+      count: '0/200',
+      check: false,
+    },
     {
       name: 'SHRIMP',
       startDate: '--',
       endDate: '--',
       count: '0/200',
+      check: false,
     },
     {
       name: 'SEA FOOD',
       startDate: '--',
       endDate: '--',
       count: '0/200',
+      check: false,
     },
     {
       name: 'OTHER FOOD',
       startDate: '--',
       endDate: '--',
       count: '0/200',
+      check: false,
     },
     {
       name: 'VEGETABLE',
       startDate: '--',
       endDate: '--',
       count: '0/155',
+      check: false,
     },
     {
       name: 'DRY FOODS',
       startDate: '--',
       endDate: '--',
       count: '0/200',
+      check: false,
     },
   ]);
 
-  const [isSignIn, setIsSignIn] = useState<{signIn: boolean; signOut: boolean}>(
-    {signIn: false, signOut: false},
-  );
+  const [openDialogType, setOpenDialogType] = useState<dialogType>({
+    view: false,
+    signIn: false,
+    signOut: false,
+  });
 
-  return {normalItem, isSignIn, setNormalItem, setIsSignIn};
+  return {normalItem, openDialogType, setNormalItem, setOpenDialogType};
 };

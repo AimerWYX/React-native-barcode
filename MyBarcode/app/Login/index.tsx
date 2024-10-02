@@ -74,7 +74,7 @@ export const Login = ({navigation}: any) => {
             </TouchableOpacity>
           </View>
         </View>
-        <Text style={styles.myApp}>React Native</Text>
+        <Text style={styles.myApp}>Learn More</Text>
       </ImageBackground>
     </SafeAreaView>
   );

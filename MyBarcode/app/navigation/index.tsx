@@ -4,6 +4,7 @@ import {ThreeMajorCategories} from '../pages/three-major-categories';
 import {NormalItem} from '../pages/three-major-categories/components/normal-item';
 import {Login} from '../Login';
 import {Home} from '../Home';
+import {ItemDetails} from '../pages/three-major-categories/components/normal-item/item-details';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +17,11 @@ const Navigator = () => {
         name="ThreeMajorCategories"
         component={ThreeMajorCategories}
       />
+      {/* <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="ItemDetails" component={ItemDetails} />
+      </Stack.Navigator> */}
       <Stack.Screen name="NormalItem" component={NormalItem} />
+      <Stack.Screen name="ItemDetails" component={ItemDetails} />
     </Stack.Navigator>
   );
 };
