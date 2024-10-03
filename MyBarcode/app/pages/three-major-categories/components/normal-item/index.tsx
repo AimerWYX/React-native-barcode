@@ -117,7 +117,9 @@ export const NormalItem = ({navigation}: any) => {
                   <View>
                     <Text
                       style={tw`text-center`}
-                      onPress={() => navigation.navigate('ItemDetails')}>
+                      onPress={() =>
+                        navigation.navigate('ItemDetails', {name: item.name})
+                      }>
                       icon
                     </Text>
                   </View>

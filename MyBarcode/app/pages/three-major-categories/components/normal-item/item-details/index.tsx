@@ -1,11 +1,26 @@
-import {ScrollView, Text, TouchableWithoutFeedback, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import tw from 'twrnc';
 import {useAction} from './hook';
 import React from 'react';
 import {Button} from '@rneui/themed';
+import {EditItemDetails} from './edit';
 
-export const ItemDetails = () => {
-  const {tabAction, listData, setTabAction} = useAction();
+export const ItemDetails = ({route}: any) => {
+  const {name} = route.params;
+
+  const {
+    tabAction,
+    listData,
+    isOpenEditDialog,
+    setTabAction,
+    setIsOpenEditDialog,
+  } = useAction(name);
 
   return (
     <View>
@@ -75,49 +90,67 @@ export const ItemDetails = () => {
         <ScrollView>
           {listData.map((item, index) => {
             return (
-              <View style={tw`py-1 box-border`}>
+              <View
+                style={tw`pt-3 px-3 box-border border-b-[0.1] border-[#ccc]`}>
                 <View style={tw`flex-row mb-3`}>
-                  <View style={tw`flex-row py-2`}>
-                    <Text style={tw`w-[20%] text-center text-[3]`}>
-                      {index + 1}
-                    </Text>
-                    <View style={tw`w-[50%] break-words`}>
-                      <Text style={tw`text-3 text-[#2988fe] mb-1`}>
-                        {item.id}
+                  <View style={tw`flex-row flex-1`}>
+                    <Text style={tw`w-[10%] text-[3]`}>{index + 1}</Text>
+                    <View style={tw`w-[80%]`}>
+                      <View style={tw`flex-row items-center`}>
+                        <Text style={tw`text-3 text-[#2988fe] mr-1`}>
+                          {item.id}
+                        </Text>
+                        <Image
+                          source={require('../../../../../assets/images/item.png')}
+                          style={tw`w-3 h-3`}
+                        />
+                      </View>
+                      <Text style={tw`text-3 my-2`}>{item.title}</Text>
+                      <Text style={tw`text-3 text-[#f03753]`}>
+                        {item.comment}
                       </Text>
-                      <Text style={tw`text-3`}>{item.title}</Text>
-                      <Text style={tw`text-3`}>{item.comment}</Text>
                     </View>
                   </View>
-                  <Text style={tw`text-3 mr-5`}>{item.SAP}</Text>
-                  <View
-                    style={tw`w-[8%] h-6 mr-5 border border-[#ccc] flex-row justify-center items-center`}>
-                    <Text style={tw`text-3`}>{item.QTY}</Text>
+                  <View style={tw`flex-1`}>
+                    <View style={tw`flex-row justify-end mb-2`}>
+                      <Text style={tw`text-3 mr-5`}>{item.SAP}</Text>
+                      <View
+                        style={tw`w-[20%] h-6 mr-5 mt-[-5] border border-[#ccc] flex-row justify-center items-center`}>
+                        <Text style={tw`text-3`}>{item.QTY}</Text>
+                      </View>
+                      <Text style={tw`text-3`}>{item.Unit}</Text>
+                    </View>
+                    <View style={tw`flex-row justify-end`}>
+                      <Button
+                        title="CW"
+                        buttonStyle={tw`w-12 p-0 py-0.5 rounded-0.5 text-2 mr-1.5`}
+                        titleStyle={tw`text-3`}
+                        onPress={() =>
+                          setIsOpenEditDialog({open: true, listData: item})
+                        }
+                      />
+                      <Button
+                        title="CONFIRM"
+                        buttonStyle={tw`w-18 p-0 py-0.5 rounded-0.5 text-2 mr-1.5 bg-[#40c83b]`}
+                        titleStyle={tw`text-3`}
+                      />
+                      <Button
+                        title="MORE"
+                        buttonStyle={tw`w-12 p-0 py-0.5 rounded-0.5 text-2`}
+                        titleStyle={tw`text-3`}
+                      />
+                    </View>
                   </View>
-                  <Text style={tw`text-3`}>{item.Unit}</Text>
-                </View>
-                <View style={tw`flex-row justify-end`}>
-                  <Button
-                    title="CW"
-                    buttonStyle={tw`w-12 p-0 py-0.5 rounded-0.5 text-2 mr-1.5`}
-                    titleStyle={tw`text-3`}
-                  />
-                  <Button
-                    title="CONFIRM"
-                    buttonStyle={tw`w-18 p-0 py-0.5 rounded-0.5 text-2 mr-1.5 bg-[#40c83b]`}
-                    titleStyle={tw`text-3`}
-                  />
-                  <Button
-                    title="MORE"
-                    buttonStyle={tw`w-12 p-0 py-0.5 rounded-0.5 text-2 mr-1.5`}
-                    titleStyle={tw`text-3`}
-                  />
                 </View>
               </View>
             );
           })}
         </ScrollView>
       </View>
+      <EditItemDetails
+        isOpenEditDialog={isOpenEditDialog}
+        setIsOpenEditDialog={setIsOpenEditDialog}
+      />
     </View>
   );
 };

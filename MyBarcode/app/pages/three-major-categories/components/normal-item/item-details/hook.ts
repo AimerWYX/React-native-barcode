@@ -1,7 +1,33 @@
 import {useState} from 'react';
 
-export const useAction = () => {
-  const [tabAction, setTabAction] = useState<string>('蔬菜--水果豆制品粉蛋类');
+export interface listDto {
+  id: string;
+  title: string;
+  SAP: number;
+  QTY: number;
+  Unit: string;
+  comment: string;
+}
+
+export const useAction = (name: string) => {
+  const initialList = {
+    id: '',
+    title: '',
+    SAP: 0,
+    QTY: 0,
+    Unit: '',
+    comment: '',
+  };
+
+  const [tabAction, setTabAction] = useState<string>(name);
+
+  const [isOpenEditDialog, setIsOpenEditDialog] = useState<{
+    open: boolean;
+    listData: listDto;
+  }>({
+    open: false,
+    listData: initialList,
+  });
 
   const [listData, setListData] = useState([
     {
@@ -50,6 +76,8 @@ export const useAction = () => {
   return {
     tabAction,
     listData,
+    isOpenEditDialog,
     setTabAction,
+    setIsOpenEditDialog,
   };
 };

@@ -19,6 +19,13 @@ export const useAction = () => {
       check: false,
     },
     {
+      name: '蔬菜--水果豆制品粉蛋类',
+      startDate: '--',
+      endDate: '--',
+      count: '0/200',
+      check: false,
+    },
+    {
       name: 'BEEF',
       startDate: '--',
       endDate: '--',

@@ -15,7 +15,13 @@ export const DialogType = (props: {
   return (
     <Dialog
       isVisible={isOpen}
-      onBackdropPress={() => {}}
+      onBackdropPress={() =>
+        setOpenDialogType({
+          view: false,
+          signIn: false,
+          signOut: false,
+        })
+      }
       overlayStyle={tw`bg-white p-0`}>
       <Dialog.Title
         title={title}
