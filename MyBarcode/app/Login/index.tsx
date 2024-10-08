@@ -11,7 +11,7 @@ import {
 import {useAction} from './hook';
 import {styles} from './css';
 
-export const Login = ({navigation}) => {
+export const Login = ({navigation}: any) => {
   const {userName, password, setUserName, setPassword} = useAction();
 
   return (
@@ -74,7 +74,7 @@ export const Login = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-        <Text style={styles.myApp}>React Native</Text>
+        <Text style={styles.myApp}>Learn More</Text>
       </ImageBackground>
     </SafeAreaView>
   );
