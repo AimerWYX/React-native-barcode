@@ -58,6 +58,7 @@ export const NormalItem = ({navigation}: any) => {
       <ScrollView style={tw`p-2`}>
         <View style={tw`flex-row items-center`}>
           <CheckBox
+            size={18}
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
             checked={normalItem.every(x => x.check)}
@@ -72,8 +73,9 @@ export const NormalItem = ({navigation}: any) => {
         <View>
           {normalItem.map((item, index) => {
             return (
-              <View style={tw`flex-row mb-0.5`}>
+              <View style={tw`flex-row items-center mb-0.5`}>
                 <CheckBox
+                  size={18}
                   checkedIcon="dot-circle-o"
                   uncheckedIcon="circle-o"
                   checked={item.check}

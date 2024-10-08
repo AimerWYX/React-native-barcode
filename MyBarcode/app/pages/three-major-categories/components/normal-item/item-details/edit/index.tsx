@@ -29,12 +29,13 @@ export const EditItemDetails = (props: editItemDetailsProps) => {
         ].map((item, index) => {
           return (
             <View style={tw`flex-row mb-3`} key={index}>
-              <View
-                style={tw`border border-[#ccc] border-r-0 py-1 px-2 flex-1`}>
+              <View style={tw`border border-[#ccc] border-r-0 py-1 px-2 w-max`}>
                 <Text style={tw`text-3`}>{item.title}</Text>
               </View>
               <TextInput
-                style={tw`border border-[#ccc] border-l-0 py-1 px-2 text-right w-[25%]`}
+                keyboardType="number-pad"
+                inputMode="numeric"
+                style={tw`border border-[#ccc] border-l-0 py-1 px-2 text-right flex-1`}
                 placeholder={item.placeholder}
               />
             </View>

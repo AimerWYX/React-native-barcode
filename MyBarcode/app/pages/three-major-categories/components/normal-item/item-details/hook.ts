@@ -29,6 +29,8 @@ export const useAction = (name: string) => {
     listData: initialList,
   });
 
+  const [selectedList, setSelectedList] = useState<string[]>([]);
+
   const [listData, setListData] = useState([
     {
       id: '10010012',
@@ -77,7 +79,9 @@ export const useAction = (name: string) => {
     tabAction,
     listData,
     isOpenEditDialog,
+    selectedList,
     setTabAction,
     setIsOpenEditDialog,
+    setSelectedList,
   };
 };
