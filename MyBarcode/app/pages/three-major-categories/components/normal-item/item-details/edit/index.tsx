@@ -42,18 +42,16 @@ export const EditItemDetails = (props: editItemDetailsProps) => {
           );
         })}
         <View style={tw`gap-3 py-3 border border-[#ddd] border-l-0 border-r-0`}>
-          <View style={tw`flex-row items-center`}>
-            <Text style={tw`w-[17%] text-right text-3`}>QC用时</Text>
-            <TextInput
-              style={tw`border border-[#ccc] py-1 px-2 text-right flex-1 ml-2`}
-            />
-          </View>
-          <View style={tw`flex-row items-center`}>
-            <Text style={tw`w-[17%] text-right text-3`}>磅数</Text>
-            <TextInput
-              style={tw`border border-[#ccc] py-1 px-2 text-right flex-1 ml-2`}
-            />
-          </View>
+          {['QC用时', '磅数'].map((item, index) => {
+            return (
+              <View style={tw`flex-row items-center`} key={index}>
+                <Text style={tw`w-[17%] text-right text-3`}>{item}</Text>
+                <TextInput
+                  style={tw`border border-[#ccc] py-1 px-2 text-right flex-1 ml-2`}
+                />
+              </View>
+            );
+          })}
         </View>
         <View style={tw`py-3 border-b border-[#ddd]`}>
           <View style={tw`flex-row justify-between items-center mb-2`}>

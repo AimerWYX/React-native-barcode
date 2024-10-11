@@ -3,6 +3,7 @@ import {
   Pressable,
   ScrollView,
   Text,
+  TextInput,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
@@ -26,7 +27,7 @@ export const ItemDetails = ({route}: any) => {
   } = useAction(name);
 
   return (
-    <View>
+    <View style={tw`bg-white`}>
       <View style={tw`flex-row justify-center border-b-[0.2] border-[#ccc]`}>
         {['CHICKEN', '蔬菜--水果豆制品粉蛋类'].map((item, index) => {
           return (
@@ -52,8 +53,8 @@ export const ItemDetails = ({route}: any) => {
           );
         })}
       </View>
-      <View style={tw`py-2 px-6`}>
-        <View style={tw`h-10`}></View>
+      <View style={tw`py-2 px-6 gap-3`}>
+        {/* <View style={tw`h-10`} /> */}
         <View style={tw`flex-row justify-between`}>
           <View style={tw`flex-row`}>
             {[
@@ -77,19 +78,36 @@ export const ItemDetails = ({route}: any) => {
           <View style={tw`flex-row items-end`}>
             <Button
               title="Start"
-              buttonStyle={tw`w-15 p-0 py-1 rounded-0.5 text-2 mr-1.5`}
+              buttonStyle={tw`w-15 p-0 py-1.5 rounded-0.5 text-2 mr-1.5`}
               titleStyle={tw`text-3`}
             />
             <Button
               title="Submit"
-              buttonStyle={tw`w-15 p-0 py-1 rounded-0.5 text-2 `}
+              buttonStyle={tw`w-15 p-0 py-1.5 rounded-0.5 text-2 `}
               titleStyle={tw`text-3`}
             />
           </View>
         </View>
+        <View style={tw`flex-row items-center gap-2 `}>
+          <View style={tw`flex-row items-center relative flex-1 `}>
+            <TextInput
+              placeholder="Search"
+              style={tw`border border-[#ccc] px-2 py-1 flex-1 `}
+            />
+            <Image
+              style={tw`w-5 h-5 absolute right-2`}
+              source={require('../../../../../assets/images/inputSearch.png')}
+            />
+          </View>
+          <Button
+            title="Cancel"
+            buttonStyle={tw`w-15 p-0 py-1.5 rounded-0.5 text-2`}
+            titleStyle={tw`text-3`}
+          />
+        </View>
       </View>
       <View>
-        <View style={tw`bg-[#bdbaba] h-5`}></View>
+        <View style={tw`bg-[#bdbaba] h-5`} />
         <ScrollView>
           {listData.map((item, index) => {
             return (
